@@ -1,0 +1,95 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+
+<!-- FORM BUSQUEDA -->
+
+<div class="inline-flex justify-center items-center space-x-4 m-4 p-2 border bg-gray-50 shadow-lg my-2 rounded-lg mx-32">
+  <form action="/" class="space-x-4" method="POST">
+    <button class="focus:outline-none hover:bg-blue-500 hover:text-white rounded p-2"><i class="fas fa-search fa-lg"></i></button>
+    <input type="text" name="search" id="" class="ring-2 ring-indigo-600 focus:ring-4 focus:ring-green-500 focus:ring-opacity-50 focus:outline-none rounded p-2" placeholder="Search" onchange="this.form.submit()"/>
+
+    <label for="" class="font-bold">Categoria</label>
+    <select name="categoria" id="cantidad" class="ring-2 ring-indigo-600 focus:ring-4 focus:ring-green-500 focus:ring-opacity-50 focus:outline-none rounded p-2" onchange="this.form.submit()">
+      <option value="">--Seleccione--</option>
+      <option value="todas">Todas</option>
+      <option value="concierto">Concierto</option>
+      <option value="teatro">Teatro</option>
+      <option value="deportes">Deportes</option>
+    </select>
+  </form>  
+</div>
+
+
+
+
+<!-- EVENTOS -->
+
+<h1 class="mx-32 text-4xl font-bold text-gray-800 border-b-4 border-blue-600 p-2">Eventos</h1>
+
+{% if eventos%}
+<div class="grid grid-cols-3 mx-32">
+{% for evento in eventos %}
+
+  <div class="rounded overflow-hidden shadow-2xl m-10 relative flex flex-col">
+    <img class="w-full h-80 transform hover:scale-110 transition duration-700 ease-in-out" src="../static/img/{{evento.2}} " alt="{{evento.1}} ">
+      <div class="px-6 py-4 flex items-center space-x-10">
+
+        <div class="text-gray-700 border inline-block p-2 bg-gray-50 shadow-xl rounded-lg text-center">
+          <div class="text-3xl font-bold text-blue-600">{{evento.9}}</div>
+          <div class="font-bold">{{evento.8}} </div>
+          <div class="font-bold">{{evento.7}}</div>
+        </div>
+        <div class="font-bold text-xl mb-2 text-center">{{evento.1}} </div>
+      </div>
+    <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+      <a href="/vista_evento/{{evento.0}}" class="w-full">Adquirir Boleta</a>
+    </button>
+  </div>
+{% endfor %}
+</div>
+{% else %}
+<div class="mx-32 p-10">
+  <p class="text-3xl p-2 my-20 capitalize text-center">Lo sentimos no podemos encontar lo que estas buscando <i class="far fa-sad-tear"></i></p>
+</div>
+{% endif%}
+
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="bg-gradient-to-r from-green-400 via-blue-500 to-indigo-500 text-white border-2 border-indigo-600">
+      <div class="m-2">
+          <h3 class="text-3xl m-5 text-center">Najhery</h3>
+          <div class="grid grid-cols-3">
+              <div class="rounded-lg p-2 m-1 hover:bg-indigo-500 text-center">
+                  <a href="" ><i class="fab fa-github-alt fa-lg"></i> Github</a>
+              </div>
+              <div class="rounded-lg p-2 m-1 hover:bg-green-400 text-center">
+                  <a href=""><i class="fab fa-facebook-square fa-lg"></i> Facebook</a>
+              </div>
+              <div class="rounded-lg p-2 m-1 hover:bg-blue-500 text-center">
+                  <a href=""><i class="fab fa-linkedin fa-lg"></i> Linkedin</a>
+              </div>
+
+          </div>
+      </div>
+      <div class="m-2">
+          <h3 class="text-3xl m-5 text-center">Cristian</h3>
+          <div class="grid grid-cols-3">
+              <div class="rounded-lg p-2 m-1 hover:bg-indigo-500 text-center">
+                  <a href="" ><i class="fab fa-github-alt fa-lg"></i> Github</a>
+              </div>
+              <div class="rounded-lg p-2 m-1 hover:bg-green-400 text-center">
+                  <a href=""><i class="fab fa-facebook-square fa-lg"></i> Facebook</a>
+              </div>
+              <div class="rounded-lg p-2 m-1 hover:bg-blue-500 text-center">
+                  <a href=""><i class="fab fa-linkedin fa-lg"></i> Linkedin</a>
+              </div>
+          </div>
+      </div>
+  </div>
+</footer>
+{% endblock %}
+

@@ -1,0 +1,40 @@
+{% extends 'entidad.html' %}
+
+{% block body%}
+<h1 class="text-center text-5xl font-bold border-b-4 border-blue-600 mx-16 my-10 p-4">Mis Eventos</h1>
+<table class=" mx-auto my-5">
+    <thead class="p-10 bg-blue-700 text-white font-bold">
+      <tr class="p-10 border-b-2">
+        <th>Nombre</th>
+        <th>Categoria</th>
+        <th>Edad Limite</th>
+        <th>Fecha</th>
+      </tr>
+    </thead>
+    <tbody class="uppercase">
+    {% for evento in eventos %}
+    <tr class="border-b-2 border-gray-500 hover:bg-gray-200 text-center">
+      <td>{{evento.1}}</td>
+      <td>{{evento.3}}</td>
+      <td>{{evento.4}}</td>
+      <td>{{evento.7}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+<div class="mx-16 grid grid-cols-4">
+{% for evento in eventos %}
+
+  <div class="rounded overflow-hidden shadow-lg m-10 relative flex flex-wrap content-between">
+    <img class="w-full h-80 transform hover:scale-110 transition duration-700 ease-in-out" src="../static/img/{{evento.2}}" alt="{{evento.1}} ">
+    <div class="px-6 py-4">
+      <div class=" text-center font-bold text-xl mb-2">{{evento.1}} </div>
+    </div>
+    <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded w-full">
+      Modificar
+    </button>
+  </div>
+{% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block body%}
+
+
+<div class="mx-32 my-6 inline-flex space-x-4 border p-4 rounded-lg bg-gray-50 shadow-lg">
+    <div>
+        <label for="" class="border-gray-800 border-b-4 text-blue-600 font-bold text-2xl">Nombre</label> <br>
+        <input type="text" value="{{clase.1}}" readonly class="focus:outline-none capitalize mt-4">
+    </div>
+    <div>
+        <label for="" class="border-gray-800 border-b-4 text-blue-600 font-bold text-2xl">Cantidad</label> <br>
+        <select name="cantidad" id="cantidad" onchange="precioTotal()" class=" mt-4">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+    </div>
+    <div>
+        <label for=""class="border-gray-800 border-b-4 text-blue-600 font-bold text-2xl">Precio Unitario</label> <br>
+        $ <input type="text" value="{{clase.2}}" id="precio" step="1" readonly class="mt-4 focus:outline-none">
+    </div>
+    <div>
+        <label for="" class="border-gray-800 border-b-4 text-blue-600 font-bold text-2xl">Precio Total</label> <br>
+        $ <input type="text" value="{{clase.2}}" id="precioTotal" class="mt-4" readonly disabled>
+    </div>
+    <div>
+        <label for="" class="border-gray-800 border-b-4 text-blue-600 font-bold text-2xl">Tipo de Pago</label> <br>
+        <select name="cantidad" id="cantidad" onchange="precioTotal()" class=" mt-4">
+            <option value="taquilla">Taquilla</option>
+            <option value="tarjeta">Tarjeta</option>
+          </select>
+    </div>
+</div>
+<div>
+    <button type="submit" class="bg-indigo-500 rounded-lg w-full py-3 px-4 text-white font-bold hover:bg-indigo-700 focus:outline-none">Añadir al carrito</button>
+</div>
+
+
+{% endblock %}

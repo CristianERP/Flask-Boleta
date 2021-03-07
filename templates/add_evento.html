@@ -1,0 +1,77 @@
+{% extends 'entidad.html' %}
+
+{% block body%}
+<div class="mx-32">
+    <h1 class="p-4 text-3xl text-center font-bold border-b-4 border-blue-600">Evento</h1>
+    <form action="/add_evento" enctype="multipart/form-data" method="POST">
+        <div class="my-4 border rounded-lg bg-gray-50 shadow-lg">
+            <div class="flex justify-between ">
+
+                <div class="m-2 space-x-4">
+                    <label for="nombre">Titulo:</label>
+                    <input type="text" name="nombre" id="" placeholder="Titulo" class="p-2 rounded focus:outline-none border border-blue-600">
+                </div>
+
+                <div class="m-2 space-x-4">
+                    <label for="categoria">Categoria:</label>
+                    <select name="categoria" id="" class="p-2 rounded focus:outline-none border border-blue-600">
+                        <option value="concierto">Concierto</option>
+                        <option value="teatro">Teatro</option>
+                    </select>
+                </div>
+                <div class="m-2 space-x-4">
+                    <label for="limEdad">Limite Edad:</label>
+                    <input type="number" name="limEdad" id="" placeholder="Limite Edad" class="p-2 rounded focus:outline-none border border-blue-600">
+                </div>
+            </div>
+            <div class="flex justify-center items-center space-x-4 m-2">
+                <label for="descripcion">Descripción: </label>
+                <textarea name="descripcion" id="" cols="60" rows="3" maxlength="255" placeholder="Descripción" class="p-2 rounded focus:outline-none border border-blue-600"></textarea>
+                <label for="img">Imagen:</label>
+                <input type="file" name="img" id="" class="p-2 rounded focus:outline-none border border-blue-600" accept="image/*">
+            </div>
+            
+        </div>
+        <h1 class="p-4 text-3xl text-center font-bold border-b-4 border-blue-600">Show</h1>
+        <div class="my-4 border rounded bg-gray-50 shadow-lg">
+            <div class="flex justify-between">
+                <div class="m-2 space-x-4">
+                    <label for="ciudad">Ciudad: </label>
+                    <input type="text" name="ciudad" id="" placeholder="Ciudad" class="p-2 rounded focus:outline-none border border-blue-600">
+                </div>
+                <div class="m-2 space-x-4">
+                    <label for="fehca">Fecha: </label>
+                    <input type="date" name="fecha" id="" placeholder="Fechas" class="p-2 rounded focus:outline-none border border-blue-600">
+                </div>
+                <div class="m-2 space-x-4">
+                    <label for="hora">Hora: </label>
+                    <input type="time" name="hora" id="" placeholder="Hora" class="p-2 rounded focus:outline-none border border-blue-600">
+                </div>
+            </div>
+            <div class="flex justify-center space-x-48">
+                <div class="m-2 space-x-4">
+                    <label for="direccion">Dirección: </label>
+                    <input type="text" name="direccion" id="" placeholder="Dirección" class="p-2 rounded focus:outline-none border border-blue-600">
+                </div>
+                <div class="m-2 space-x-4">
+                    <label for="auditorio">Auditorio: </label>
+                    <select name="auditorio" id="" class="p-2 rounded focus:outline-none border border-blue-600">
+                        <option value="1">Movistar Arena</option>
+                        <option value="2">Teatro Municipal Cali</option>
+                        <option value="3">Base Naval</option>
+                        <option value="4">Centro Autopista Norte</option>
+                        <option value="5">Teatro ABC</option>
+                        <option value="6">Teatro Jorge E. Gaitan</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <div class="my-10 text-center">
+            <button class="my-2 p-4 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-700 hover:shadow-lg" type="submit">
+                Agregar
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

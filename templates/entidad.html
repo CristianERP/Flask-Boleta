@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boleta Mania</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+    <link rel="shortcut icon" href="https://www.blueindic.com/blog/wp-content/uploads/2017/04/ticket-01-300x283.png" />
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <nav class="bg-gradient-to-r from-green-400 via-blue-500 to-indigo-500 mr-auto text-white p-5 shadow-sm sticky top-0 flex justify-around z-10">
+            <div class="flex items-center space-x-2">
+                <a href="/"> <i class="fas fa-ticket-alt  fa-2x"></i></a>
+                <span class="font-bold">Boleta Mania</span>
+            </div>
+            <div class="grid grid-cols-3 divide-x-2 divide-green-500 text-center bar-entidad">
+                <a href="#"" class="capitalize"><i class="fas fa-user"></i> Bienvenido {{user}}</a>
+                <a href="/add_evento">Administrar Eventos</a>
+                <a href="/logout">Cerrar Sesión</a>
+            </div>
+    </nav>
+    {% block body %}
+
+    {% endblock %}
+
+</body>
+</html>

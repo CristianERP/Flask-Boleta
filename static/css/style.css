@@ -1,0 +1,41 @@
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.bar-entidad a{
+    padding: 5px;
+}
+
+th, td{
+    padding: 10px;
+}
+
+.vista-evento p{
+    font-size: 1.5em;
+    font-weight: bold;
+    color: royalblue;
+}
+.vista-evento p span{
+    color: black;
+    font-weight: lighter;
+}
+
+.tabla-asiento th{
+    border-bottom: 1px solid black;
+    border-collapse: collapse;
+}
+.tabla-asiento td{
+    border-bottom: 1px solid black;
+    border-collapse: collapse;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+input[type=number] { -moz-appearance:textfield; }
+
+textarea::placeholder{
+    text-align: center;
+}
