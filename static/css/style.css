@@ -19,6 +19,15 @@ th, td{
     color: black;
     font-weight: lighter;
 }
+.resumen p{
+    font-size: 1.5em;
+    font-weight: bold;
+    color: royalblue;
+}
+.resumen input{
+    color: black;
+    font-weight: lighter; 
+}
 
 .tabla-asiento th{
     border-bottom: 1px solid black;

@@ -195,18 +195,21 @@ def vista_event(id_event):
     print(clase_asiento)
     return render_template('vista_evento.html', evento=g.view, clases_asiento=clase_asiento, user = g.user)
 
-@app.route('/compra/<id_clase>')
-def compra(id_clase):
+@app.route('/compra/<id_clase>/<id_evento>')
+def compra(id_clase, id_evento):
     if 'username' in session:
         g.user = session['username'][1]
         g.id = session['username'][0]
     else:
         g.user = None
         g.id = None
+        return redirect(url_for('signin'))
     cur = mysql.connection.cursor()
     cur.execute('SELECT * FROM clase_asiento WHERE id_claseasiento = %s',(id_clase,))
     row = cur.fetchall()[0]
-    return render_template('compra.html', clase = row, user=g.user)
+    cur.execute('SELECT * FROM forma_pago')
+    forma_pago = cur.fetchall()
+    return render_template('compra.html', clase = row, user=g.user, formas_pago=forma_pago, evento=id_evento)
 
 
 # EVENTOS
@@ -247,6 +250,45 @@ def add_evento():
             g.user = None
             g.id = None
             return redirect(url_for('home'))
+
+@app.route('/resumen_boleta/<id_evento>')
+def boleta(id_evento):
+    if 'username' in session:
+        g.user = session['username'][1]
+        g.id = session['username'][0]
+    else:
+        g.user = None
+        g.id = None
+        return redirect(url_for('signin'))
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT nombre FROM evento WHERE id_evento=%s',(id_evento,))
+    nombre = cur.fetchall()[0]
+    cantidad = request.args.get("cantidad")
+    costo = request.args.get("total")
+    clase = request.args.get("clase_asiento")
+    forma_pago = request.args.get("forma_pago")
+    data = [cantidad, costo, clase, forma_pago, nombre]
+    return render_template('boleta.html', data = data, user=g.user)
+
+@app.route('/compraFinal')
+def compraFinal():
+    if 'username' in session:
+        g.user = session['username'][1]
+        g.id = session['username'][0]
+    else:
+        g.user = None
+        g.id = None
+        return redirect(url_for('signin'))
+    precio = request.args.get('costo')
+    cantidad = request.args.get('cantidad')
+    forma = request.args.get('pago')
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT id_forma_pago FROM forma_pago WHERE forma_pago = %s',(forma,))
+    id_forma = cur.fetchall()[0][0]
+    cur.execute('INSERT INTO compra (precio, cantidad_boleta, id_usuario, forma_pago) VALUES (%s, %s, %s, %s)',(precio, cantidad, g.id, id_forma))
+    mysql.connection.commit()
+    return render_template('final_compra.html', user=g.user)
+
 
 @app.route('/profile')
 def profile():

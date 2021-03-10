@@ -2,46 +2,82 @@
 
 {% block body%}
 
+<form action="/resumen_boleta/{{evento}}" method="" class="grid justify-items-center">
 
-<div class="mx-32 my-6 inline-flex space-x-4 border p-4 rounded-lg bg-gray-50 shadow-lg">
-    <div>
-        <label for="" class="border-gray-800 border-b-4 text-blue-600 font-bold text-2xl">Nombre</label> <br>
-        <input type="text" value="{{clase.1}}" readonly class="focus:outline-none capitalize mt-4">
+    <div class="mx-32 my-20 inline-flex space-x-4 border p-4 rounded-lg bg-gray-50 shadow-lg">
+        <div>
+            <label for="" class="border-gray-800 border-b-4 text-blue-600 font-bold text-2xl">Nombre</label> <br>
+            <input type="text" name="clase_asiento" value="{{clase.1}}" readonly class="focus:outline-none capitalize mt-4">
+        </div>
+        <div>
+            <label for="" class="border-gray-800 border-b-4 text-blue-600 font-bold text-2xl">Cantidad</label> <br>
+            <select name="cantidad" id="cantidad" onchange="precioTotal()" class=" mt-4">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+        </div>
+        <div>
+            <label for=""class="border-gray-800 border-b-4 text-blue-600 font-bold text-2xl">Precio Unitario</label> <br>
+            $ <input type="text" value="{{clase.2}}" name="precio" id="precio" step="1" readonly class="mt-4 focus:outline-none">
+        </div>
+        <div>
+            <label for="" class="border-gray-800 border-b-4 text-blue-600 font-bold text-2xl">Precio Total</label> <br>
+            $ <input type="text" value="{{clase.2}}" name="total" id="total" onchange="precioTotal()" readonly class="mt-4 focus:outline-none">
+        </div>
+        <div>
+            <label for="" class="border-gray-800 border-b-4 text-blue-600 font-bold text-2xl">Tipo de Pago</label> <br>
+            <select name="forma_pago" id=""  class=" mt-4 capitalize">
+                {% for forma_pago in formas_pago%}
+                <option value="{{forma_pago.1}}" class="">{{forma_pago.1}}</option>
+                {% endfor %}
+            </select>
+        </div>
     </div>
     <div>
-        <label for="" class="border-gray-800 border-b-4 text-blue-600 font-bold text-2xl">Cantidad</label> <br>
-        <select name="cantidad" id="cantidad" onchange="precioTotal()" class=" mt-4">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
+        <button type="submit" class="bg-indigo-500 rounded-lg w-full py-3 px-4 text-white font-bold hover:bg-indigo-700 focus:outline-none">Añadir al carrito</button>
     </div>
-    <div>
-        <label for=""class="border-gray-800 border-b-4 text-blue-600 font-bold text-2xl">Precio Unitario</label> <br>
-        $ <input type="text" value="{{clase.2}}" id="precio" step="1" readonly class="mt-4 focus:outline-none">
-    </div>
-    <div>
-        <label for="" class="border-gray-800 border-b-4 text-blue-600 font-bold text-2xl">Precio Total</label> <br>
-        $ <input type="text" value="{{clase.2}}" id="precioTotal" class="mt-4" readonly disabled>
-    </div>
-    <div>
-        <label for="" class="border-gray-800 border-b-4 text-blue-600 font-bold text-2xl">Tipo de Pago</label> <br>
-        <select name="cantidad" id="cantidad" onchange="precioTotal()" class=" mt-4">
-            <option value="taquilla">Taquilla</option>
-            <option value="tarjeta">Tarjeta</option>
-          </select>
-    </div>
-</div>
-<div>
-    <button type="submit" class="bg-indigo-500 rounded-lg w-full py-3 px-4 text-white font-bold hover:bg-indigo-700 focus:outline-none">Añadir al carrito</button>
-</div>
+</form>
 
+<footer class="absolute -bottom-0 w-full">
+    <div class="bg-gradient-to-r from-green-400 via-blue-500 to-indigo-500 text-white border-2 border-indigo-600">
+        <div class="m-2">
+            <h3 class="text-3xl m-5 text-center">Najhery</h3>
+            <div class="grid grid-cols-3">
+                <div class="rounded-lg p-2 m-1 hover:bg-indigo-500 text-center">
+                    <a href="" ><i class="fab fa-github-alt fa-lg"></i> Github</a>
+                </div>
+                <div class="rounded-lg p-2 m-1 hover:bg-green-400 text-center">
+                    <a href=""><i class="fab fa-facebook-square fa-lg"></i> Facebook</a>
+                </div>
+                <div class="rounded-lg p-2 m-1 hover:bg-blue-500 text-center">
+                    <a href=""><i class="fab fa-linkedin fa-lg"></i> Linkedin</a>
+                </div>
+  
+            </div>
+        </div>
+        <div class="m-2">
+            <h3 class="text-3xl m-5 text-center">Cristian</h3>
+            <div class="grid grid-cols-3">
+                <div class="rounded-lg p-2 m-1 hover:bg-indigo-500 text-center">
+                    <a href="" ><i class="fab fa-github-alt fa-lg"></i> Github</a>
+                </div>
+                <div class="rounded-lg p-2 m-1 hover:bg-green-400 text-center">
+                    <a href=""><i class="fab fa-facebook-square fa-lg"></i> Facebook</a>
+                </div>
+                <div class="rounded-lg p-2 m-1 hover:bg-blue-500 text-center">
+                    <a href=""><i class="fab fa-linkedin fa-lg"></i> Linkedin</a>
+                </div>
+            </div>
+        </div>
+    </div>
+  </footer>
 
 {% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+
+<div class="mx-32 my-6">
+    <h1 class="text-blue-600 font-bold my-5 text-4xl text-center">Detalle</h1>
+    <hr class="border-4 bg-gray-800">
+    <div class="grid">
+        <form action="/compraFinal" method="GET" >
+        <div class="mx-4 my-10 border p-4 vista-evento rounded-lg shadow-xl bg-gray-100 text-center relative">
+            <h1 class="text-center text-3xl font-bold p-4 mb-8">Compra</h1>
+            <div class="my-10">
+                
+                <p> <i class="fas fa-building"></i> Evento: <span> {{data.4.0}}</span> </p> 
+                <input type="text" name="evento" value="{{data.4.0}}" class="hidden">
+                <p> <i class="fas fa-dollar-sign"></i> Costo: <span>{{data.1}}</span></p>
+                <input type="text" name="costo" value="{{data.1}}" class="hidden">
+                <p> <i class="fas fa-clone"></i> Calse Asiento: <span class="capitalize"> {{data.2}}</span></p>
+                <input type="text" name="clase" value="{{data.2}}" class="hidden" >
+                <p> <i class="fas fa-chair"></i> Cantidad Asientos: <span>{{data.0}} </span></p>
+                <input type="text" name="cantidad" value="{{data.0}}" class="hidden">
+                <p> <i class="fas fa-money-bill-wave-alt"></i> Forma de Pago: <span class="capitalize">{{ data.3}}</span></p>
+                <input type="text" name="pago" value="{{data.3}}" class="hidden">
+            </div>
+        </div>
+        <div>
+            <button type="submit" class="bg-indigo-500 rounded-lg w-full py-3 px-4 text-white font-bold hover:bg-indigo-700 focus:outline-none">Finalizar Compra</button>
+        </div>
+        </form>
+
+    </div>
+</div>
+
+<!-- FOOTER -->
+
+<footer>
+    <div class="bg-gradient-to-r from-green-400 via-blue-500 to-indigo-500 text-white border-2 border-indigo-600">
+        <div class="m-2">
+            <h3 class="text-3xl m-5 text-center">Najhery</h3>
+            <div class="grid grid-cols-3">
+                <div class="rounded-lg p-2 m-1 hover:bg-indigo-500 text-center">
+                    <a href="" ><i class="fab fa-github-alt fa-lg"></i> Github</a>
+                </div>
+                <div class="rounded-lg p-2 m-1 hover:bg-green-400 text-center">
+                    <a href=""><i class="fab fa-facebook-square fa-lg"></i> Facebook</a>
+                </div>
+                <div class="rounded-lg p-2 m-1 hover:bg-blue-500 text-center">
+                    <a href=""><i class="fab fa-linkedin fa-lg"></i> Linkedin</a>
+                </div>
+  
+            </div>
+        </div>
+        <div class="m-2">
+            <h3 class="text-3xl m-5 text-center">Cristian</h3>
+            <div class="grid grid-cols-3">
+                <div class="rounded-lg p-2 m-1 hover:bg-indigo-500 text-center">
+                    <a href="" ><i class="fab fa-github-alt fa-lg"></i> Github</a>
+                </div>
+                <div class="rounded-lg p-2 m-1 hover:bg-green-400 text-center">
+                    <a href=""><i class="fab fa-facebook-square fa-lg"></i> Facebook</a>
+                </div>
+                <div class="rounded-lg p-2 m-1 hover:bg-blue-500 text-center">
+                    <a href=""><i class="fab fa-linkedin fa-lg"></i> Linkedin</a>
+                </div>
+            </div>
+        </div>
+    </div>
+  </footer>
+{% endblock %}
